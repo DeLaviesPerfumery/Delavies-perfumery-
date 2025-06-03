@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>De'Lavies Perfumery | Luxury Scents</title>
+  <style>
+    :root {
+      --dark-bg: #1a1a2e;
+      --dark-text: #e6e6e6;
+      --dark-accent: #a45cff;
+      --light-bg: #f9f9f9;
+      --light-text: #333;
+      --light-accent: #6a0dad;
+    }
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+      transition: all 0.3s ease;
+    }
+    body.light-mode {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+    }
+    header {
+      background: linear-gradient(135deg, #3a1c71 0%, #d76d77 100%);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .hero {
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    .notice {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ff6b6b;
+      color: white;
+      font-weight: bold;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+    .product-img {
+      height: 200px;
+      background-color: #ddd;
+      background-size: cover;
+      background-position: center;
+    }
+    .product-info {
+      padding: 1rem;
+    }
+    .price {
+      color: var(--dark-accent);
+      font-weight: bold;
+    }
+    .light-mode .price {
+      color: var(--light-accent);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>De'Lavies Perfumery</h1>
+    <p>Luxury Scents for Everyone</p>
+  </header>
+
+  <div class="notice">
+    ⚠️ Orders cannot be placed currently due to a legal issue. You can still browse our catalog.
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#men">Men</a></li>
+      <li><a href="#women">Women</a></li>
+      <li><a href="#kids">Kids</a></li>
+    </ul>
+    <button class="theme-toggle">🌙</button>
+  </nav>
+
+  <main>
+    <section id="home">
+      <div class="hero">
+        <h2>Discover Your Signature Scent</h2>
+        <p>Explore luxury fragrances — now view-only due to a legal matter</p>
+      </div>
+    </section>
+
+    <section id="men">
+      <h2>Men's Collection</h2>
+      <div class="product-grid"></div>
+    </section>
+
+    <section id="women">
+      <h2>Women's Collection</h2>
+      <div class="product-grid"></div>
+    </section>
+
+    <section id="kids">
+      <h2>Kids' Collection</h2>
+      <div class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2023 De'Lavies Perfumery | Orders disabled temporarily</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.querySelector('.theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      toggleBtn.textContent = document.body.classList.contains('light-mode') ? '🌞' : '🌙';
+    });
+
+    const products = {
+      men: [
+        { name: "Noir Essence", price: 15 }, { name: "Midnight Oud", price: 20 },
+        { name: "Sandalwood King", price: 12 }, { name: "Aqua Marine", price: 10 },
+        { name: "Leather & Spice", price: 18 }, { name: "Tobacco Vanille", price: 20 },
+        { name: "Cedar Supreme", price: 14 }, { name: "Amber Mystique", price: 16 },
+        { name: "Bergamot Bliss", price: 8 }, { name: "Whiskey Smoke", price: 20 },
+        { name: "Vetiver Storm", price: 17 }, { name: "Citrus Musk", price: 13 }
+      ],
+      women: [
+        { name: "Rose Elixir", price: 18 }, { name: "Vanilla Dream", price: 15 },
+        { name: "Jasmine Nights", price: 20 }, { name: "Peony Bloom", price: 12 },
+        { name: "Citrus Zest", price: 10 }, { name: "Lavender Mist", price: 14 },
+        { name: "Suede Petals", price: 16 }, { name: "Mango Tango", price: 8 },
+        { name: "Cashmere Rose", price: 20 }, { name: "Pearl Essence", price: 18 },
+        { name: "Amber Bloom", price: 17 }, { name: "Cherry Silk", price: 16 }
+      ],
+      kids: [
+        { name: "Bubble Gum", price: 5 }, { name: "Cotton Candy", price: 6 },
+        { name: "Fruit Punch", price: 7 }, { name: "Rainbow Sprinkles", price: 5 },
+        { name: "Lemon Drop", price: 6 }, { name: "Berry Blast", price: 7 },
+        { name: "Marshmallow", price: 5 }, { name: "Watermelon", price: 6 },
+        { name: "Gummy Bear", price: 7 }, { name: "Chocolate Chip", price: 5 },
+        { name: "Orange Pop", price: 6 }, { name: "Minty Fresh", price: 6 }
+      ]
+    };
+
+    function renderProducts() {
+      for (const category in products) {
+        const section = document.getElementById(category);
+        const grid = section.querySelector('.product-grid');
+        grid.innerHTML = '';
+
+        products[category].forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.innerHTML = `
+            <div class="product-img" style="background-image: url('https://source.unsplash.com/random/300x300/?${encodeURIComponent(product.name)}')"></div>
+            <div class="product-info">
+              <h3>${product.name}</h3>
+              <p class="price">$${product.price}</p>
+              <p><em>Currently unavailable</em></p>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      }
+    }
+
+    renderProducts();
+  </script>
+</body>
+</html>
